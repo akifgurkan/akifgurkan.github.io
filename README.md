@@ -1,2 +1,2 @@
-# akifgurkan.github.io
-Kişisel Web Sayfam
+# https://akifgurkan.github.io/
+## Kişisel Web Sayfam
