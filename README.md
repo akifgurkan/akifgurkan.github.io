@@ -1,2 +1,3 @@
-## My personal page ## # akifgurkan.github.io
-## Akif Gürkan
+## My personal page: ##
+# akifgurkan.github.io ##
+ Akif Gürkan
