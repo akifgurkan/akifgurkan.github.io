@@ -1,5 +1,6 @@
 ## My personal page: ##
 # akifgurkan.github.io #
+
 Akif Gürkan 
 
-Software Test Engineer
+QA / Software Test Engineer
