@@ -1,3 +1,4 @@
 ## My personal page: ##
 # akifgurkan.github.io #
- Akif Gürkan
+Akif Gürkan
+Software Test Engineer
