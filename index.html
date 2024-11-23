@@ -1,118 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        h1 {
-            color: red;
-        }
-    </style>
-
-    
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Akif GÜRKAN / QA</title>
+    <style>
+        /* Önceki stiller aynı kalacak */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    
+        body {
+            background: linear-gradient(to right, #f0f4f8, #e2eaf2);
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem auto;
+            display: block;
+            object-fit: cover;
+            border: 4px solid #4299e1;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            color: #2b6cb0;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            color: #2c5282;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .about-content {
+            font-size: 1.1rem;
+            color: #4a5568;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-item {
+            background: #f7fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #4299e1;
+        }
+
+        /* Yeni LinkedIn button stilleri */
+        .social-section {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .linkedin-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0A66C2;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(10, 102, 194, 0.3);
+            margin: 1rem 0;
+            gap: 10px;
+        }
+
+        .linkedin-button:hover {
+            background-color: #084e96;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(10, 102, 194, 0.4);
+        }
+
+        .linkedin-button:active {
+            transform: translateY(0);
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .contact-info a {
+            color: #4a5568;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a:hover {
+            color: #2b6cb0;
+        }
+
+        .email-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background-color: #f7fafc;
+            transition: all 0.3s ease;
+        }
+
+        .email-link:hover {
+            background-color: #e2e8f0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #718096;
+        }
+
+        .title-subtitle {
+            color: #4a5568;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
-    
-   <center> <h1>  Welcome to my Personal Page. </h1><br>
+    <div class="container">
+        <header>
+            <img src="Akif_Picture.jpeg" alt="Akif Gürkan" class="profile-image">
+            <h1>Akif Gürkan</h1>
+            <p class="title-subtitle">Software Test Engineer</p>
+        </header>
 
-       
-   <a class="libutton" > Welcome to my Personal Page </a>
+        <section class="section">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>Hello Everyone, I'm Akif Gürkan. I am an experienced Software Test Engineer in the IT industry. My interest and passion for the world of software testing is fuelled by the desire to always explore and learn new technologies. I am a strong believer in teamwork and enjoy learning and sharing new things.</p>
+                <p>My experience ranges from Manual Testing to web and mobile automation testing.</p>
+            </div>
+        </section>
 
-       
-  <h3>The site is under construction ! 
+        <section class="section">
+            <h2 class="section-title">Technical Skills and Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-item">Programming Languages: Java, SQL, Gherkin</div>
+                <div class="skill-item">UI Test Tools: Selenium WebDriver, Cucumber, JUnit, TestNG, Selenium Grid</div>
+                <div class="skill-item">Frameworks/Methodologies: Behaviour Driven (BDD), Agile-Scrum</div>
+                <div class="skill-item">Mobile Testing: Appium</div>
+                <div class="skill-item">CI/CD: Jenkins</div>
+                <div class="skill-item">Database Testing: JDBC, SQL, MySQL</div>
+                <div class="skill-item">Version Control: Git/GitHub</div>
+                <div class="skill-item">Markup Languages: HTML, CSS</div>
+            </div>
+        </section>
 
-      <?xml version="1.0" encoding="utf-8"?> </h3> <br>
+        <section class="section">
+            <h2 class="section-title">Soft Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">Detail-oriented</div>
+                <div class="skill-item">Problem Solving</div>
+                <div class="skill-item">Interpersonal Skills</div>
+                <div class="skill-item">Adaptable</div>
+                <div class="skill-item">Creative Thinking</div>
+                <div class="skill-item">Situational Awareness</div>
+                <div class="skill-item">Self-motivated</div>
+                <div class="skill-item">Collaboration & Team Work</div>
+            </div>
+        </section>
 
-       
-    <table style="width:70%; border-collapse: collapse;">
-    <tr>
-      <th><h2>About me: </h2> </th>
-        </tr>
-    <tr>
-      <td><p><h3>Hello Everyone,  I'm Akif Gürkan.  I am an experienced Software Test Engineer in the IT industry.
-        My interest and passion for the world of software testing is fuelled by the desire
-        
-        to always explore and learn new technologies. I am a strong believer in teamwork and enjoy learning and sharing new things.
-        My experience ranges from Manual Testing to web and mobile automation testing.
-         Along the way I have acquired the following skills:</h3></p>
-        <br></td>
-          </tr>
-       
-            <tr>
-              <th><h2> TECHNICAL SKILLS AND TECHNOLOGIES: </h2></th>
-                       </tr>
-            <tr>
-              <td><p><h3>✔ Programming Languages: Java, SQL, Gherkin
-                ✔ UI Test Tools: Selenium WebDriver, Cucumber, JUnit, TestNG, Selenium Grid
-                ✔ Frameworks/Methodologies: Behaviour Driven (BDD), Agile-Scrum
-                ✔ Appium, for mobile testing
-                ✔ CI/CD: Jenkins
-                ✔ Database Testing: JDBC , SQL, MySQL
-                ✔ Version Control System: Git/GitHub
-                ✔ Markup Languages: HTML, CSS</h3></p></td>
-                          </tr>
-                       
-                            <tr>
-                              <th><h2>  SOFT SKILLS :</h2></th>
-                            
-                            </tr>
-                            <tr>
-                              <td><p><h3>✔ Detail-oriented ✔ Problem Solving 
-                                ✔ Interpersonal Skills ✔ Adaptable ✔ Creative Thinking 
-                                ✔ Situational Awareness ✔ Ambition ✔ Multicultural Relationships
-                                ✔ Manners ✔ Self-motivated ✔ Collaboration & Team Work </h3></p></td>
-                            
-                            </tr>
-  </table>
-  
-</center>
-<style>
-    body{
-        background-color: #a7ddbc;
-    }
-    h2{
-        color: #d61212;
-    }
-    h1{
-        color: #1226be;
-    }
-   
-</style>
+        <section class="social-section">
+            <h2 class="section-title">Let's Connect!</h2>
+            <a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=akifgurkan" target="_blank" class="linkedin-button">
+                <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                Follow on LinkedIn
+            </a>
+            <div class="contact-info">
+                <a href="mailto:akifgurkan15@gmail.com" class="email-link">
+                    <svg height="20" width="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="vertical-align: middle; margin-right: 5px;">
+                        <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+                    </svg>
+                    akifgurkan15@gmail.com
+                </a>
+            </div>
+        </section>
 
-<!-- birkaç satır alta geç -->
-<br>
-
-<center>
-
-      <style>
-        .libutton {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          padding: 7px;
-          text-align: center;
-          outline: none;
-          text-decoration: none !important;
-          color: #ffffff !important;
-          width: 200px;
-          height: 32px;
-          border-radius: 16px;
-          background-color: #0A66C2;
-          font-family: "SF Pro Text", Helvetica, sans-serif;
-        }
-      </style>
-<a class="libutton" href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=akifgurkan" target="_blank">Follow on LinkedIn</a>
-
-  
-    <a href="mailto:akifgurkan15@gmail.com"> <h3>Mail: akifgurkan15@gmail.com</h3></a> 
-    <!-- Buraya eklenecek olan yeni içerik ekle varsa -->
-    2024
-</center>
-
-
+        <footer>
+            <p>&copy; 2024 Akif Gürkan. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
