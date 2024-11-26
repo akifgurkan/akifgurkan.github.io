@@ -44,18 +44,15 @@ Bu GitHub sayfamda projelerimi, test süreçlerimi ve öğrendiğim teknolojiler
 1. **[Abone Sepeti: Web Test Otomasyonu]**  
    - 📄 Açıklama: Bu proje, Abone Sepeti sitesinin fonksiyonel testlerini gerçekleştirmek amacıyla oluşturulmuştur.  
    - 🚀 Teknolojiler: Selenium, Java, Cucumber  
-   - 📌 [Gizli](#)  
-
+ 
 2. **[Abone Sepeti: Mobil Uygulama Testi]**  
    - 📄 Açıklama: Bir mobil uygulamanın kullanıcı dostu ve hatasız çalışmasını sağlamak için yapılmış test çalışması.  
    - 🚀 Teknolojiler: Manuel ve Appium ile Mobil tesler yapıldı. 
-   - 📌 [Gizli](#)  
-
+ 
    3. **[Abone Sepeti-İşCep Mobil: Mobil Uygulama Testi]**  
    - 📄 Açıklama: İş bankası mobil uygulamasına entegre edilen Abonesepeti uygulamasının kullanıcı dostu ve hatasız çalışmasını sağlamak için yapılmış test manuel çalışması.  
    - 🚀 Teknolojiler: Asana  
-   - 📌 [Gizli](#)  
-
+   
 ---
 
 ## 📬 İletişim  
@@ -70,3 +67,5 @@ Bu GitHub sayfamda projelerimi, test süreçlerimi ve öğrendiğim teknolojiler
 ---
 
 > 💡 **Not:** Bu sayfa sürekli olarak güncellenmektedir. Yeni projelerimi ve deneyimlerimi eklemeye devam edeceğim!
+Ziyaretiniz için Teşekkürler :)
+© 2024 Akif Gürkan. All rights reserved.
