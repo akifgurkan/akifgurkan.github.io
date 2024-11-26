@@ -1,8 +1,10 @@
 ## My personal page: ##
 # www.akifgurkan.github.io #
 
-Akif Gürkan 
+Akif Gürkan:
 QA / Software Test Engineer
+
+
 
 
 
