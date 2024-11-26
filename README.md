@@ -63,7 +63,7 @@ Bu GitHub sayfamda projelerimi, test süreçlerimi ve öğrendiğim teknolojiler
 - 🌐 **Kişisel Web Sitesi:** [akifgurkan.github.io](https://akifgurkan.github.io)  
 - 📧 **E-posta:** [akifgurkan15@gmail.com](mailto:akifgurkan15@gmail.com
 )  
-- 💼 **LinkedIn:** [https://www.linkedin.com/in/akifgurkan/](#)  
+- 💼 **LinkedIn:** [https://www.linkedin.com/in/akifgurkan/](https://www.linkedin.com/in/akifgurkan/)   
 
 ---
 
