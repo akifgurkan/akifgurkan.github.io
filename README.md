@@ -1,5 +1,5 @@
 ## My personal page: ##
-# www.akifgurkan.github.io #
+# akifgurkan.github.io #
 
 Akif Gürkan 
 
