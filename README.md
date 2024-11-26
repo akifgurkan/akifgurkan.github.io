@@ -42,7 +42,7 @@ Bu GitHub sayfamda projelerimi, test süreçlerimi ve öğrendiğim teknolojiler
 ## 📂 Projelerimden Bazıları:  
 
 1. **[Abone Sepeti: Web Test Otomasyonu]**  
-   - 📄 Açıklama: Bu proje, bir e-ticaret sitesinin fonksiyonel testlerini gerçekleştirmek amacıyla oluşturulmuştur.  
+   - 📄 Açıklama: Bu proje, Abone Sepeti sitesinin fonksiyonel testlerini gerçekleştirmek amacıyla oluşturulmuştur.  
    - 🚀 Teknolojiler: Selenium, Java, Cucumber  
    - 📌 [Gizli](#)  
 
@@ -64,6 +64,8 @@ Bu GitHub sayfamda projelerimi, test süreçlerimi ve öğrendiğim teknolojiler
 - 📧 **E-posta:** [akifgurkan15@gmail.com](mailto:akifgurkan15@gmail.com
 )  
 - 💼 **LinkedIn:** [https://www.linkedin.com/in/akifgurkan/](https://www.linkedin.com/in/akifgurkan/)   
+- 📸 **Instagram:** [qatester1532](https://www.instagram.com/qatester1532/)  
+
 
 ---
 
