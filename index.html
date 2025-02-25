@@ -6,7 +6,7 @@
     <meta name="description" content="Akif Gürkan - QA Engineer and Software Test Expert with expertise in Selenium, Appium, and Cucumber">
     <title>Akif Gürkan | QA Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=WwHz_NB1LbA0AP1SlnZrQ9s19QAQ-RI_aIRp9iMRj-8pfhAcH0umSNB5Mh0_29vc" charset="UTF-8"></script><style>
         :root {
             --primary: #2b6cb0;
             --primary-light: #4299e1;
@@ -78,12 +78,14 @@
         }
 
         .nav-links a {
-            color: var(--text-dark);
+            color: var(--primary-dark);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600; /* Daha kalın font */
             position: relative;
-            padding: 0.5rem 0;
+            padding: 0.5rem 0.8rem; /* Padding artırıldı */
             transition: var(--transition);
+            border-radius: 8px;
+            background-color: rgba(66, 153, 225, 0.1); /* Hafif bir arka plan rengi */
         }
 
         .nav-links a::after {
@@ -92,13 +94,15 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 3px; /* Kalınlık artırıldı */
             background-color: var(--primary);
             transition: var(--transition);
         }
 
         .nav-links a:hover {
             color: var(--primary);
+            background-color: rgba(66, 153, 225, 0.2); /* Hover durumunda biraz daha koyu arka plan */
+            transform: translateY(-2px); /* Hafif yukarı hareket ekledim */
         }
 
         .nav-links a:hover::after {
@@ -426,6 +430,17 @@
             background-color: #c53030;
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(229, 62, 62, 0.4);
+        }
+
+        .instagram-button {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+            box-shadow: 0 4px 6px rgba(225, 48, 108, 0.3);
+        }
+
+        .instagram-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(225, 48, 108, 0.4);
         }
 
         .contact-form {
@@ -828,6 +843,10 @@
                     <i class="fab fa-github"></i>
                     GitHub
                 </a>
+                <a href="https://www.instagram.com/qatester1532/" target="_blank" class="social-button instagram-button">
+                    <i class="fab fa-instagram"></i>
+                    Instagram
+                </a>
                 <a href="mailto:akifgurkan15@gmail.com" class="social-button email-button">
                     <i class="fas fa-envelope"></i>
                     Email Me
@@ -856,61 +875,4 @@
         </section>
     </div>
 
-    <a href="#" class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
-    <footer>
-        <p class="footer-text">Thanks for visiting my portfolio!</p>
-        <div class="footer-links">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#experience">Experience</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <p class="copyright">&copy; 2025 Akif Gürkan. All rights reserved.</p>
-    </footer>
-
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-        
-        // Close menu when clicking on links
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-        
-        // Back to top button
-        const backToTopBtn = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        });
-        
-        backToTopBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        
-        // Form submission
-        const contactForm = document.getElementById('contactForm');
-        
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Here
+    <a href="#" class="
