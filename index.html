@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akif GÜRKAN / QA</title>
+    <meta name="description" content="Akif Gürkan - QA Engineer and Software Test Expert with expertise in Selenium, Appium, and Cucumber">
+    <title>Akif Gürkan | QA Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #2b6cb0;
+            --primary-light: #4299e1;
+            --primary-dark: #2c5282;
+            --secondary: #718096;
+            --bg-light: #f0f4f8;
+            --bg-white: #ffffff;
+            --text-dark: #2d3748;
+            --text-light: #4a5568;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,108 +28,374 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background: linear-gradient(to right, #f0f4f8, #e2eaf2);
-            color: #2d3748;
+            background: linear-gradient(135deg, var(--bg-light), #e2eaf2);
+            color: var(--text-dark);
             line-height: 1.6;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem; /* Azaltılmış padding */
+            padding: 1rem;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            margin-bottom: 2rem;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+            background: none;
+            border: none;
         }
 
         header {
             text-align: center;
-            padding: 1.5rem 0; /* Azaltılmış padding */
-            background: white;
+            padding: 3rem 0;
+            background: var(--bg-white);
             border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1.5rem; /* Azaltılmış margin */
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(66, 153, 225, 0.1), rgba(43, 108, 176, 0.1));
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+            z-index: 0;
+        }
+
+        .profile-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 1.5rem;
         }
 
         .profile-image {
-            width: 150px; /* Küçültülmüş boyut */
-            height: 150px; /* Küçültülmüş boyut */
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
-            margin: 0 auto 1rem auto; /* Azaltılmış margin */
-            display: block;
             object-fit: cover;
-            border: 3px solid #4299e1; /* İnce çerçeve */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            border: 4px solid var(--primary-light);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
 
         .profile-image:hover {
             transform: scale(1.05);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .profile-image-border {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            border: 2px dashed var(--primary-light);
+            animation: rotate 20s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         h1 {
-            color: #2b6cb0;
-            font-size: 2rem; /* Küçültülmüş font */
-            margin-bottom: 0.5rem; /* Azaltılmış margin */
+            color: var(--primary-dark);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .title-subtitle {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background-color: rgba(66, 153, 225, 0.1);
+            border-radius: 50px;
+        }
+
+        .header-cta {
+            margin-top: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
         }
 
         .section {
-            background: white;
-            padding: 1.5rem;
+            background: var(--bg-white);
+            padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .section-icon {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--primary-light);
+            opacity: 0.7;
         }
 
         .section-title {
-            color: #2c5282;
-            font-size: 1.6rem;
+            color: var(--primary-dark);
+            font-size: 1.8rem;
             margin-bottom: 1.5rem;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-light);
         }
 
         .about-content {
             font-size: 1.1rem;
-            color: #4a5568;
+            color: var(--text-light);
+        }
+
+        .about-content p {
+            margin-bottom: 1rem;
+        }
+
+        .about-content p:last-child {
+            margin-bottom: 0;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-category {
+            margin-bottom: 2rem;
+        }
+
+        .skill-category-title {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.5rem;
         }
 
         .skill-item {
-            background: #f7fafc;
+            background: rgba(247, 250, 252, 0.8);
             padding: 1rem;
             border-radius: 8px;
-            border-left: 4px solid #4299e1;
+            border-left: 4px solid var(--primary-light);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .skill-item:hover {
+            transform: translateX(5px);
+            background: rgba(237, 242, 247, 0.9);
+            box-shadow: var(--shadow);
+        }
+
+        .skill-icon {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--primary-light);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-date {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .experience-description {
+            color: var(--text-light);
         }
 
         .social-section {
             text-align: center;
-            padding: 2rem;
-            background: white;
+            padding: 2.5rem;
+            background: var(--bg-white);
             border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             margin: 2rem 0;
         }
 
-        .linkedin-button {
+        .social-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: #0A66C2;
-            color: white;
-            padding: 1rem 2.5rem;
+            padding: 0.8rem 2rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
+            font-weight: 500;
+            transition: var(--transition);
+            gap: 0.6rem;
+            min-width: 180px;
+        }
+
+        .linkedin-button {
+            background-color: #0A66C2;
+            color: white;
             box-shadow: 0 4px 6px rgba(10, 102, 194, 0.3);
-            margin: 1rem 0;
-            gap: 10px;
         }
 
         .linkedin-button:hover {
@@ -122,123 +404,513 @@
             box-shadow: 0 6px 12px rgba(10, 102, 194, 0.4);
         }
 
-        .linkedin-button:active {
-            transform: translateY(0);
+        .github-button {
+            background-color: #333;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
-        .contact-info {
-            text-align: center;
-            margin-top: 1rem;
+        .github-button:hover {
+            background-color: #24292e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
 
-        .contact-info a {
-            color: #4a5568;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 1.1rem;
+        .email-button {
+            background-color: #e53e3e;
+            color: white;
+            box-shadow: 0 4px 6px rgba(229, 62, 62, 0.3);
         }
 
-        .contact-info a:hover {
-            color: #2b6cb0;
+        .email-button:hover {
+            background-color: #c53030;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(229, 62, 62, 0.4);
         }
 
-        .email-link {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
+        .contact-form {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #e2e8f0;
             border-radius: 8px;
             background-color: #f7fafc;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
-        .email-link:hover {
-            background-color: #e2e8f0;
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            grid-column: 1 / -1;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .form-submit:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--primary);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            box-shadow: var(--shadow);
+            z-index: 100;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
 
         footer {
             text-align: center;
-            padding: 1.5rem;
-            color: #718096;
+            padding: 2rem;
+            margin-top: 2rem;
+            background-color: var(--bg-white);
+            border-radius: 15px 15px 0 0;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05);
         }
 
-        .title-subtitle {
-            color: #4a5568;
-            font-size: 1rem; /* Küçültülmüş font */
-            margin-bottom: 0.5rem; /* Azaltılmış margin */
+        .footer-text {
+            color: var(--secondary);
+            margin-bottom: 1rem;
         }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-white);
+                flex-direction: column;
+                gap: 0;
+                box-shadow: var(--shadow);
+                padding: 1rem 0;
+                border-radius: 0 0 15px 15px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 0.8rem 2rem;
+                display: block;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">AkifGürkan</a>
+            <div class="nav-links" id="navLinks">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
     <div class="container">
         <header>
-            <img src="Akif_Picture.png" alt="Akif Gürkan" class="profile-image">
-            <h1>Akif Gürkan</h1>
-            <p class="title-subtitle">QA / Software Test Engineer</p>
+            <div class="profile-content">
+                <div class="profile-image-container animate">
+                    <div class="profile-image-border"></div>
+                    <img src="Akif_Picture.png" alt="Akif Gürkan" class="profile-image">
+                </div>
+                <h1 class="animate delay-1">Akif Gürkan</h1>
+                <p class="title-subtitle animate delay-2">QA Engineer / Software Test Expert</p>
+                <div class="header-cta animate delay-3">
+                    <a href="#contact" class="cta-button">
+                        <i class="fas fa-envelope"></i> Contact Me
+                    </a>
+                </div>
+            </div>
         </header>
 
-        <section class="section">
+        <section id="about" class="section animate">
+            <i class="fas fa-user section-icon"></i>
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
-                <p> With over 10 years of IT experience, I moved from web design and coding to QA automation engineering.
-                  engineering. I have developed deep expertise in manual and automated testing using tools such as
-                  Core Java, Selenium, Appium and Cucumber. I have a strong background in ensuring high quality results in
-                  projects through API testing, backend testing and working within Agile/Scrum methodologies. 
-                 and effective teamwork.</p>
-                <p>With ISTQB Foundation Level certification and strong analytical skills, I excel at problem solving and effective teamwork.</p>
-                <p>I have more than 2 years of experience in QA / Software Test Engineering.</p>
+                <p>With over 10 years of IT experience, I transitioned from web design and coding to QA automation engineering. I have developed deep expertise in manual and automated testing using tools such as Core Java, Selenium, Appium, and Cucumber.</p>
+                <p>I have a strong background in ensuring high-quality results in projects through API testing, backend testing, and working within Agile/Scrum methodologies and effective teamwork.</p>
+                <p>With ISTQB Foundation Level certification and strong analytical skills, I excel at problem-solving and effective teamwork. I have more than 2 years of specialized experience in QA / Software Test Engineering.</p>
             </div>
         </section>
 
-        <section class="section">
-            <h2 class="section-title">Technical Skills and Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-item">Programming Languages: Core Java, SQL, Gherkin</div>
-                <div class="skill-item">UI Test Tools: Selenium WebDriver, Cucumber, JUnit, TestNG, Selenium Grid</div>
-                <div class="skill-item">Frameworks/Methodologies: Behaviour Driven (BDD), Agile-Scrum</div>
-                <div class="skill-item">Mobile Testing: Appium</div>
-                <div class="skill-item">CI/CD: Jenkins</div>
-                <div class="skill-item">Database Testing: JDBC, SQL, MySQL</div>
-                <div class="skill-item">Version Control: Git/GitHub</div>
-                <div class="skill-item">Markup Languages: HTML, CSS</div>
+        <section id="skills" class="section animate">
+            <i class="fas fa-code section-icon"></i>
+            <h2 class="section-title">Technical Skills</h2>
+            
+            <div class="skill-category">
+                <h3 class="skill-category-title">Programming & Languages</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-java skill-icon"></i>
+                        Core Java
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-database skill-icon"></i>
+                        SQL
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-list-check skill-icon"></i>
+                        Gherkin
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-html5 skill-icon"></i>
+                        HTML
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-css3-alt skill-icon"></i>
+                        CSS
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3 class="skill-category-title">Testing Tools & Frameworks</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-check-circle skill-icon"></i>
+                        Selenium WebDriver
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-pagelines skill-icon"></i>
+                        Cucumber
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-vial skill-icon"></i>
+                        JUnit
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-vials skill-icon"></i>
+                        TestNG
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-network-wired skill-icon"></i>
+                        Selenium Grid
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-mobile-alt skill-icon"></i>
+                        Appium
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-exchange-alt skill-icon"></i>
+                        API Testing
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-database skill-icon"></i>
+                        JDBC, MySQL
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3 class="skill-category-title">Methodologies & Tools</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-tasks skill-icon"></i>
+                        Agile-Scrum
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-lightbulb skill-icon"></i>
+                        BDD
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-jenkins skill-icon"></i>
+                        Jenkins CI/CD
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-git-alt skill-icon"></i>
+                        Git/GitHub
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3 class="skill-category-title">Soft Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-search-plus skill-icon"></i>
+                        Detail-oriented
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-puzzle-piece skill-icon"></i>
+                        Problem Solving
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-users skill-icon"></i>
+                        Collaboration & Team Work
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-sync-alt skill-icon"></i>
+                        Adaptable
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-brain skill-icon"></i>
+                        Creative Thinking
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-eye skill-icon"></i>
+                        Situational Awareness
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-rocket skill-icon"></i>
+                        Self-motivated
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-comments skill-icon"></i>
+                        Interpersonal Skills
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="section">
-            <h2 class="section-title">Soft Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-item">Detail-oriented</div>
-                <div class="skill-item">Problem Solving</div>
-                <div class="skill-item">Interpersonal Skills</div>
-                <div class="skill-item">Adaptable</div>
-                <div class="skill-item">Creative Thinking</div>
-                <div class="skill-item">Situational Awareness</div>
-                <div class="skill-item">Self-motivated</div>
-                <div class="skill-item">Collaboration & Team Work</div>
+        <section id="experience" class="section animate">
+            <i class="fas fa-briefcase section-icon"></i>
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="experience-item">
+                <h3 class="experience-title">QA Automation Engineer</h3>
+                <p class="experience-company">Software Company</p>
+                <p class="experience-date">2022 - Present</p>
+                <p class="experience-description">
+                    Responsible for designing and implementing automated test frameworks using Selenium, Cucumber, and Java. Perform API testing, collaborate with development teams in an Agile environment, and ensure high-quality software delivery through comprehensive test coverage.
+                </p>
+            </div>
+            
+            <div class="experience-item">
+                <h3 class="experience-title">Software Test Engineer</h3>
+                <p class="experience-company">IT Solutions Company</p>
+                <p class="experience-date">2021 - 2022</p>
+                <p class="experience-description">
+                    Conducted manual testing, created detailed test cases, reported bugs, and contributed to test automation initiatives. Collaborated with cross-functional teams to ensure product quality and reliability.
+                </p>
+            </div>
+            
+            <div class="experience-item">
+                <h3 class="experience-title">Web Developer</h3>
+                <p class="experience-company">Digital Agency</p>
+                <p class="experience-date">2018 - 2021</p>
+                <p class="experience-description">
+                    Developed responsive websites using HTML, CSS, and JavaScript. Collaborated with designers to implement visual elements and ensure cross-browser compatibility and responsive design.
+                </p>
             </div>
         </section>
 
-
-        <section class="social-section">
+        <section id="contact" class="social-section animate">
             <h2 class="section-title">Let's Connect!</h2>
-            <a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=akifgurkan" target="_blank" class="linkedin-button">
-                <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-                Follow on LinkedIn
-            </a>
-            <div class="contact-info">
-                <a href="mailto:akifgurkan15@gmail.com" class="email-link">
-                    <svg height="20" width="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="vertical-align: middle; margin-right: 5px;">
-                        <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
-                    </svg>
-                    akifgurkan15@gmail.com
+            <p>Feel free to reach out for collaborations, opportunities, or just to say hello!</p>
+            
+            <div class="social-buttons">
+                <a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=akifgurkan" target="_blank" class="social-button linkedin-button">
+                    <i class="fab fa-linkedin-in"></i>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/akifgurkan" target="_blank" class="social-button github-button">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+                <a href="mailto:akifgurkan15@gmail.com" class="social-button email-button">
+                    <i class="fas fa-envelope"></i>
+                    Email Me
                 </a>
             </div>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-input" required>
+                </div>
+                <div class="form-group full">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" id="subject" class="form-input" required>
+                </div>
+                <div class="form-group full">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" class="form-textarea" required></textarea>
+                </div>
+                <button type="submit" class="form-submit">Send Message</button>
+            </form>
         </section>
-
-        <footer>
-            <p>&copy; 2024 Akif Gürkan. All rights reserved.</p>
-        </footer>
     </div>
-</body>
-</html>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer>
+        <p class="footer-text">Thanks for visiting my portfolio!</p>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p class="copyright">&copy; 2024 Akif Gürkan. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close menu when clicking on links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Back to top button
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Here
