@@ -68,4 +68,4 @@ Bu GitHub sayfamda projelerimi, test süreçlerimi ve öğrendiğim teknolojiler
 
 > 💡 **Not:** Bu sayfa sürekli olarak güncellenmektedir. Yeni projelerimi ve deneyimlerimi eklemeye devam edeceğim!
 > Ziyaretiniz için Teşekkürler :)
-- © 2025 Akif Gürkan. All rights reserved.
+- © 2026 Akif Gürkan. All rights reserved.
