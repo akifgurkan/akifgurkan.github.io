@@ -270,7 +270,7 @@
 
         h1 {
             color: var(--primary-dark);
-            font-size: 2.5rem;
+            font-size: 2.0625rem;
             line-height: 1.3;
             margin-bottom: 0.25rem;
         }
@@ -294,7 +294,8 @@
             gap: 0.5rem;
             background-color: var(--action-bg);
             color: white;
-            padding: 0.8rem 2rem;
+            padding: 0.68rem 1.7rem;
+            min-height: 44px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
@@ -395,6 +396,12 @@
             display: flex;
             align-items: center;
             gap: 0.8rem;
+        }
+
+        .certificate-link {
+            display: block;
+            color: var(--primary-dark);
+            font-size: 0.9rem;
         }
 
         .skill-item:hover {
@@ -782,7 +789,7 @@
                     <button type="button" lang="en" aria-label="English" aria-pressed="true" data-language="en">EN</button>
                     <button type="button" lang="tr" aria-label="Türkçe" aria-pressed="false" data-language="tr">TR</button>
                 </div>
-                <button type="button" id="themeToggle" aria-label="Dark theme" aria-pressed="false" data-i18n-label="theme">
+                <button type="button" id="themeToggle" aria-label="Switch to dark theme">
                     <i class="fas fa-moon" aria-hidden="true"></i>
                 </button>
                 <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Navigation menu" aria-controls="navLinks" aria-expanded="false" data-i18n-label="menu">
@@ -813,75 +820,63 @@
             <i class="fas fa-user section-icon" aria-hidden="true"></i>
             <h2 class="section-title" data-i18n="aboutTitle">About Me</h2>
             <div class="about-content">
-                <p data-i18n="aboutTesting">I'm an ISTQB-certified software tester with experience in manual testing across web, Android, and iOS, including functional, regression, and exploratory testing.</p>
-                <p data-i18n="aboutAutomation">I use Postman for API testing, Newman and GitHub Actions for test automation, and have experience verifying financial data and checking quality in fintech. I focus on analyzing defects, writing clear bug reports, and understanding how issues affect the user experience.</p>
+                <p data-i18n="aboutTesting">I’m an ISTQB-certified software tester. I design test scenarios for web, Android, and iOS, from functional and regression checks to exploratory, usability, and end-to-end testing. My bug reports include the steps and evidence needed to reproduce an issue.</p>
+                <p data-i18n="aboutAutomation">I automate API checks with Postman and Newman and web UI tests with Java and Selenium WebDriver. In fintech, I use SQL to check financial data and compare API responses with what users see on screen.</p>
             </div>
         </section>
 
         <section id="skills" tabindex="-1" class="section animate">
-    <i class="fas fa-code section-icon" aria-hidden="true"></i>
-    <h2 class="section-title" data-i18n="skillsTitle">Technical Skills</h2>
+            <i class="fas fa-code section-icon" aria-hidden="true"></i>
+            <h2 class="section-title" data-i18n="skillsTitle">Technical Skills</h2>
 
-    <div class="skill-category">
-        <h3 class="skill-category-title" data-i18n="apiBackend">API & Backend Testing</h3>
-        <div class="skills-grid">
-            <div class="skill-item"><i class="fas fa-exchange-alt skill-icon" aria-hidden="true"></i> <span data-i18n="apiTesting">API Testing</span></div>
-            <div class="skill-item"><i class="fas fa-server skill-icon" aria-hidden="true"></i> <span data-i18n="backendTesting">Backend Testing</span></div>
-            <div class="skill-item"><i class="fas fa-paper-plane skill-icon" aria-hidden="true"></i> Postman</div>
-            <div class="skill-item"><i class="fas fa-terminal skill-icon" aria-hidden="true"></i> Newman</div>
-            <div class="skill-item"><i class="fas fa-key skill-icon" aria-hidden="true"></i> <span data-i18n="apiAuth">API Auth Testing</span></div>
-            <div class="skill-item"><i class="fas fa-database skill-icon" aria-hidden="true"></i> SQL</div>
-        </div>
-    </div>
+            <div class="skill-category">
+                <h3 class="skill-category-title" data-i18n="apiData">API &amp; Data Testing</h3>
+                <div class="skills-grid">
+                    <div class="skill-item"><i class="fas fa-exchange-alt skill-icon" aria-hidden="true"></i> <span data-i18n="apiTesting">API Testing</span></div>
+                    <div class="skill-item"><i class="fas fa-server skill-icon" aria-hidden="true"></i> <span data-i18n="backendTesting">Backend Testing</span></div>
+                    <div class="skill-item"><i class="fas fa-paper-plane skill-icon" aria-hidden="true"></i> Postman</div>
+                    <div class="skill-item"><i class="fas fa-terminal skill-icon" aria-hidden="true"></i> Newman</div>
+                    <div class="skill-item"><i class="fas fa-database skill-icon" aria-hidden="true"></i> MS SQL Server / SQL</div>
+                    <div class="skill-item"><i class="fas fa-check-double skill-icon" aria-hidden="true"></i> <span data-i18n="dataValidation">Data Validation</span></div>
+                </div>
+            </div>
 
-    <div class="skill-category">
-        <h3 class="skill-category-title" data-i18n="automation">Test Automation & CI</h3>
-        <div class="skills-grid">
-            <div class="skill-item"><i class="fas fa-vial skill-icon" aria-hidden="true"></i> <span data-i18n="smoke">Smoke Testing</span></div>
-            <div class="skill-item"><i class="fas fa-sync-alt skill-icon" aria-hidden="true"></i> <span data-i18n="regression">Regression Testing</span></div>
-            <div class="skill-item"><i class="fab fa-github skill-icon" aria-hidden="true"></i> GitHub Actions</div>
-            <div class="skill-item"><i class="fas fa-code-branch skill-icon" aria-hidden="true"></i> <span data-i18n="ciAutomation">CI Test Automation</span></div>
-            <div class="skill-item"><i class="fab fa-java skill-icon" aria-hidden="true"></i> <span data-i18n="coreJava">Core Java</span></div>
-            <div class="skill-item"><i class="fas fa-list-check skill-icon" aria-hidden="true"></i> Gherkin</div>
-        </div>
-    </div>
+            <div class="skill-category">
+                <h3 class="skill-category-title" data-i18n="automation">Test Automation &amp; CI/CD</h3>
+                <div class="skills-grid">
+                    <div class="skill-item"><i class="fab fa-java skill-icon" aria-hidden="true"></i> Java</div>
+                    <div class="skill-item"><i class="fas fa-window-maximize skill-icon" aria-hidden="true"></i> Selenium WebDriver</div>
+                    <div class="skill-item"><i class="fas fa-vial skill-icon" aria-hidden="true"></i> TestNG</div>
+                    <div class="skill-item"><i class="fas fa-box skill-icon" aria-hidden="true"></i> Maven</div>
+                    <div class="skill-item"><i class="fas fa-list-check skill-icon" aria-hidden="true"></i> Cucumber BDD / Gherkin</div>
+                    <div class="skill-item"><i class="fab fa-github skill-icon" aria-hidden="true"></i> GitHub Actions</div>
+                </div>
+            </div>
 
-    <div class="skill-category">
-        <h3 class="skill-category-title" data-i18n="mobileWeb">Mobile & Web Testing</h3>
-        <div class="skills-grid">
-            <div class="skill-item"><i class="fas fa-mobile-alt skill-icon" aria-hidden="true"></i> <span data-i18n="android">Android Testing</span></div>
-            <div class="skill-item"><i class="fab fa-apple skill-icon" aria-hidden="true"></i> <span data-i18n="ios">iOS Testing</span></div>
-            <div class="skill-item"><i class="fas fa-globe skill-icon" aria-hidden="true"></i> <span data-i18n="web">Web Testing</span></div>
-            <div class="skill-item"><i class="fas fa-layer-group skill-icon" aria-hidden="true"></i> <span data-i18n="crossPlatform">Cross-platform Testing</span></div>
-            <div class="skill-item"><i class="fas fa-bug skill-icon" aria-hidden="true"></i> <span data-i18n="bugAnalysis">Bug Analysis</span></div>
-            <div class="skill-item"><i class="fas fa-network-wired skill-icon" aria-hidden="true"></i> Charles Proxy</div>
-        </div>
-    </div>
+            <div class="skill-category">
+                <h3 class="skill-category-title" data-i18n="mobileWeb">Mobile &amp; Web Testing</h3>
+                <div class="skills-grid">
+                    <div class="skill-item"><i class="fas fa-globe skill-icon" aria-hidden="true"></i> <span data-i18n="web">Web Testing</span></div>
+                    <div class="skill-item"><i class="fas fa-mobile-alt skill-icon" aria-hidden="true"></i> <span data-i18n="android">Android Testing</span></div>
+                    <div class="skill-item"><i class="fab fa-apple skill-icon" aria-hidden="true"></i> <span data-i18n="ios">iOS Testing</span></div>
+                    <div class="skill-item"><i class="fas fa-sync-alt skill-icon" aria-hidden="true"></i> <span data-i18n="regression">Regression Testing</span></div>
+                    <div class="skill-item"><i class="fas fa-compass skill-icon" aria-hidden="true"></i> <span data-i18n="exploratory">Exploratory Testing</span></div>
+                    <div class="skill-item"><i class="fas fa-network-wired skill-icon" aria-hidden="true"></i> Charles Proxy</div>
+                </div>
+            </div>
 
-    <div class="skill-category">
-        <h3 class="skill-category-title" data-i18n="tools">Tools & Test Management</h3>
-        <div class="skills-grid">
-            <div class="skill-item"><i class="fab fa-git-alt skill-icon" aria-hidden="true"></i> Git / GitHub</div>
-            <div class="skill-item"><i class="fas fa-tasks skill-icon" aria-hidden="true"></i> Asana</div>
-            <div class="skill-item"><i class="fas fa-file-alt skill-icon" aria-hidden="true"></i> <span data-i18n="testDesign">Test Case Design</span></div>
-            <div class="skill-item"><i class="fas fa-clipboard-check skill-icon" aria-hidden="true"></i> <span data-i18n="bugReporting">Bug Reporting</span></div>
-            <div class="skill-item"><i class="fas fa-users skill-icon" aria-hidden="true"></i> <span data-i18n="agile">Agile / Scrum</span></div>
-            <div class="skill-item"><i class="fas fa-certificate skill-icon" aria-hidden="true"></i> <span data-i18n="istqb">ISTQB Foundation Level</span></div>
-        </div>
-    </div>
-
-    <div class="skill-category">
-        <h3 class="skill-category-title" data-i18n="softSkills">Soft Skills</h3>
-        <div class="skills-grid">
-            <div class="skill-item"><i class="fas fa-search-plus skill-icon" aria-hidden="true"></i> <span data-i18n="detail">Detail-oriented</span></div>
-            <div class="skill-item"><i class="fas fa-puzzle-piece skill-icon" aria-hidden="true"></i> <span data-i18n="problemSolving">Problem Solving</span></div>
-            <div class="skill-item"><i class="fas fa-users skill-icon" aria-hidden="true"></i> <span data-i18n="teamwork">Collaboration & Team Work</span></div>
-            <div class="skill-item"><i class="fas fa-eye skill-icon" aria-hidden="true"></i> <span data-i18n="awareness">Situational Awareness</span></div>
-            <div class="skill-item"><i class="fas fa-comments skill-icon" aria-hidden="true"></i> <span data-i18n="communication">Clear Communication</span></div>
-            <div class="skill-item"><i class="fas fa-rocket skill-icon" aria-hidden="true"></i> <span data-i18n="motivation">Self-motivated</span></div>
-        </div>
-    </div>
-</section>
+            <div class="skill-category">
+                <h3 class="skill-category-title" data-i18n="tools">QA Process &amp; Tools</h3>
+                <div class="skills-grid">
+                    <div class="skill-item"><i class="fab fa-git-alt skill-icon" aria-hidden="true"></i> Git / GitHub</div>
+                    <div class="skill-item"><i class="fas fa-tasks skill-icon" aria-hidden="true"></i> Jira / Asana</div>
+                    <div class="skill-item"><i class="fas fa-file-alt skill-icon" aria-hidden="true"></i> <span data-i18n="testDesign">Test Case Design</span></div>
+                    <div class="skill-item"><i class="fas fa-clipboard-check skill-icon" aria-hidden="true"></i> <span data-i18n="bugReporting">Bug Reporting</span></div>
+                    <div class="skill-item"><i class="fas fa-vial skill-icon" aria-hidden="true"></i> <span data-i18n="smoke">Smoke Testing</span></div>
+                    <div class="skill-item"><i class="fas fa-certificate skill-icon" aria-hidden="true"></i> <div>ISTQB CTFL<a class="certificate-link" href="https://app.diplomasafe.com/en-US/diploma/d9002d3d70dd11a8d88183fcceea944892666c063/istqb-foundation-level-ctfl/linkedin" target="_blank" rel="noopener noreferrer" data-i18n="certificateLink">View Certificate</a></div></div>
+                </div>
+            </div>
+        </section>
 
         <section id="experience" tabindex="-1" class="section animate">
             <i class="fas fa-briefcase section-icon" aria-hidden="true"></i>
@@ -890,8 +885,8 @@
             <div class="experience-item">
                 <h3 class="experience-title" data-i18n="ecoTitle">QA Engineer</h3>
                 <p class="experience-company" data-i18n="ecoCompany">Ecofin · Fixed-Term Contract</p>
-                <p class="experience-date" data-i18n="ecoDate">Aug 2026 – Nov 2026 · Approx. 3 months</p>
-                <p class="experience-description" data-i18n="ecoDescription">Tested web, Android, and iOS products in financial technology and financial data analytics. Performed API testing and financial data validation, automated API checks in Postman, and ran smoke, regression, and exploratory tests. Verified issues manually and reported reproducible defects.</p>
+                <p class="experience-date" data-i18n="ecoDate">Aug 2026 – Nov 2026</p>
+                <p class="experience-description" data-i18n="ecoDescription">Tested web, Android, and iOS products in financial technology and financial data analytics. Performed API testing and financial data validation, automated API checks in Postman, and ran smoke, regression, and exploratory tests. Used SQL queries in MS SQL Server to check database records against API results. Verified issues manually and reported reproducible defects.</p>
             </div>
             
   <div class="experience-item">
@@ -899,7 +894,7 @@
     <p class="experience-company" data-i18n="aboneCompany">AboneSepeti · Freelance</p>
     <p class="experience-date" data-i18n="aboneDate">Apr 2024 – Present · Remote</p>
     <p class="experience-description" data-i18n="aboneDescription">
-        Perform manual, API, backend, web, Android and iOS testing for AboneSepeti products. Create and execute functional, UI and smoke test scenarios; validate request/response flows with Postman; and report clear, reproducible defects through Asana. Built and maintained Postman/Newman smoke test automation and moved the process to GitHub Actions for scheduled CI execution and Slack-based failure notifications.
+        Perform manual, API, backend, web, Android and iOS testing for AboneSepeti products. Create and execute functional, UI and smoke test scenarios; validate request/response flows with Postman; and report clear, reproducible defects through Asana. Built and maintained Postman/Newman smoke test automation and moved the process to GitHub Actions for scheduled CI execution and Slack-based failure notifications. I also automate web UI tests with Java, Selenium WebDriver, and TestNG.
     </p>
 </div>
 
@@ -946,16 +941,16 @@
             <h2 class="section-title" data-i18n="qaNav">QA Work</h2>
             <div class="qa-grid">
                 <article class="qa-card">
-                    <h3 data-i18n="qaApiTitle">API Testing &amp; Data Validation</h3>
-                    <p data-i18n="qaApiText">I check API responses against expected values and compare financial data with its source.</p>
+                    <h3 data-i18n="qaApiTitle">API Test Automation &amp; Data Validation</h3>
+                    <p data-i18n="qaApiText">I automate API checks with Postman and Newman and run them in GitHub Actions. I query MS SQL Server to check that financial values in API responses match database records.</p>
                 </article>
                 <article class="qa-card">
-                    <h3 data-i18n="qaAutomationTitle">Test Automation &amp; CI/CD</h3>
-                    <p data-i18n="qaAutomationText">I automate API smoke checks with Postman and Newman and run them through GitHub Actions.</p>
+                    <h3 data-i18n="qaAutomationTitle">UI Test Automation</h3>
+                    <p data-i18n="qaAutomationText">I write web UI tests in Java with Selenium WebDriver and TestNG and use Maven to build and run tests. In earlier projects, I wrote Gherkin scenarios for Cucumber BDD.</p>
                 </article>
                 <article class="qa-card">
-                    <h3 data-i18n="qaMobileTitle">Mobile &amp; Web Quality Assurance</h3>
-                    <p data-i18n="qaMobileText">I test user flows on web, Android, and iOS and document defects with clear reproduction steps.</p>
+                    <h3 data-i18n="qaMobileTitle">Manual Web &amp; Mobile QA</h3>
+                    <p data-i18n="qaMobileText">I run functional, regression, exploratory, and usability tests on web, Android, and iOS. I inspect HTTP requests and API responses with Charles Proxy and report defects with evidence and steps to reproduce them.</p>
                 </article>
             </div>
         </section>
@@ -1028,7 +1023,6 @@
             description: 'API testi, finansal veri doğrulama, test otomasyonu ve web, Android ve iOS testlerinde deneyimli ISTQB sertifikalı yazılım test uzmanı Akif Gürkan.',
             mainNav: 'Ana menü',
             language: 'Dil',
-            theme: 'Koyu tema',
             menu: 'Gezinme menüsü',
             backToTop: 'Sayfanın başına dön',
             aboutNav: "Hakkımda",
@@ -1039,44 +1033,33 @@
             subtitle: "Yazılım Test Uzmanı | Manuel Test, API Testi ve Test Otomasyonu",
             contactCta: "İletişime Geç",
             aboutTitle: "Hakkımda",
-            aboutTesting: "ISTQB sertifikalı bir yazılım test uzmanıyım. Web, Android ve iOS uygulamalarında manuel test deneyimim var. Fonksiyonel, regresyon ve keşif testleri yapıyorum.",
-            aboutAutomation: "API testlerinde Postman, test otomasyonunda Newman ve GitHub Actions kullanıyorum. Finansal teknoloji alanında finansal veri doğrulama ve kalite kontrolü deneyimim var. Hataları analiz etmeye, açık ve anlaşılır raporlar hazırlamaya ve sorunların kullanıcı deneyimine etkisini anlamaya önem veriyorum.",
+            aboutTesting: "ISTQB sertifikalı bir yazılım test uzmanıyım. Web, Android ve iOS için test senaryoları hazırlıyor, fonksiyonel testlerin yanı sıra regresyon, keşif, kullanılabilirlik ve uçtan uca testler yapıyorum. Hataları tekrar üretme adımları ve bulguyu destekleyen kanıtlarla raporluyorum.",
+            aboutAutomation: "API kontrollerini Postman ve Newman ile, web arayüz testlerini Java ve Selenium WebDriver ile otomatikleştiriyorum. Finansal teknoloji alanında finansal verileri SQL ile doğruluyor, API yanıtlarını kullanıcının ekranda gördüğü değerlerle karşılaştırıyorum.",
             skillsTitle: "Teknik Beceriler",
-            apiBackend: "API ve Arka Uç Testleri",
+            apiData: "API ve Veri Testleri",
+            dataValidation: "Veri Doğrulama",
+            exploratory: "Keşif Testi",
+            certificateLink: "Sertifikayı Görüntüle",
             apiTesting: "API Testi",
             backendTesting: "Arka Uç Testi",
-            apiAuth: "API Kimlik Doğrulama Testi",
-            automation: "Test Otomasyonu ve Sürekli Entegrasyon",
+            automation: "Test Otomasyonu ve CI/CD",
             smoke: "Smoke Testi",
             regression: "Regresyon Testi",
-            ciAutomation: "Sürekli Entegrasyonda Test Otomasyonu",
-            coreJava: "Java Temelleri",
             mobileWeb: "Mobil ve Web Testleri",
             android: "Android Testi",
             ios: "iOS Testi",
             web: "Web Testi",
-            crossPlatform: "Platformlar Arası Test",
-            bugAnalysis: "Hata Analizi",
-            tools: "Araçlar ve Test Yönetimi",
+            tools: "Kalite Güvence Süreci ve Araçları",
             testDesign: "Test Senaryosu Tasarımı",
             bugReporting: "Hata Raporlama",
-            agile: "Çevik Yöntemler / Scrum",
-            istqb: "ISTQB Temel Seviye",
-            softSkills: "Kişisel Beceriler",
-            detail: "Detaylara Dikkat",
-            problemSolving: "Problem Çözme",
-            teamwork: "İş Birliği ve Takım Çalışması",
-            awareness: "Durumsal Farkındalık",
-            communication: "Açık İletişim",
-            motivation: "Kendi Kendini Motive Edebilme",
             ecoTitle: "Kalite Güvence Mühendisi",
             ecoCompany: "Ecofin · Belirli Süreli Sözleşme",
-            ecoDate: "Ağustos 2026 – Kasım 2026 · Yaklaşık 3 ay",
-            ecoDescription: "Finansal teknoloji ve finansal veri analitiği alanında web, Android ve iOS ürünlerini test ettim. API testleri ve finansal veri doğrulaması yaptım, Postman ile API kontrollerini otomatikleştirdim. Smoke, regresyon ve keşif testleri yürüttüm. Sorunları manuel olarak doğruladım ve tekrar üretilebilir hata raporları hazırladım.",
+            ecoDate: "Ağustos 2026 – Kasım 2026",
+            ecoDescription: "Finansal teknoloji ve finansal veri analitiği alanında web, Android ve iOS ürünlerini test ettim. API testleri ve finansal veri doğrulaması yaptım, Postman ile API kontrollerini otomatikleştirdim. Smoke, regresyon ve keşif testleri yürüttüm. MS SQL Server’da SQL sorgularıyla veritabanı kayıtlarını API sonuçlarıyla karşılaştırdım. Sorunları manuel olarak doğruladım ve tekrar üretilebilir hata raporları hazırladım.",
             aboneTitle: "Yazılım Kalite Güvence Mühendisi",
             aboneCompany: "AboneSepeti · Serbest Çalışma",
             aboneDate: "Nisan 2024 – Günümüz · Uzaktan",
-            aboneDescription: "AboneSepeti ürünlerinde web, Android ve iOS üzerinde manuel testler, API testleri ve arka uç testleri yapıyorum. Fonksiyonel, arayüz ve smoke test senaryoları hazırlayıp yürütüyor, Postman ile istek ve yanıt akışlarını doğruluyor ve tekrar üretilebilir hataları Asana’da raporluyorum. Postman ve Newman ile geliştirdiğim smoke test otomasyonunu GitHub Actions’a taşıdım. Böylece testler zamanlanmış olarak çalışıyor ve başarısız sonuçlar Slack üzerinden bildiriliyor.",
+            aboneDescription: "AboneSepeti ürünlerinde web, Android ve iOS üzerinde manuel testler, API testleri ve arka uç testleri yapıyorum. Fonksiyonel, arayüz ve smoke test senaryoları hazırlayıp yürütüyor, Postman ile istek ve yanıt akışlarını doğruluyor ve tekrar üretilebilir hataları Asana’da raporluyorum. Postman ve Newman ile geliştirdiğim smoke test otomasyonunu GitHub Actions’a taşıdım. Böylece testler zamanlanmış olarak çalışıyor ve başarısız sonuçlar Slack üzerinden bildiriliyor. Ayrıca Java, Selenium WebDriver ve TestNG ile web arayüz testlerini otomatikleştiriyorum.",
             testEngineer: "Yazılım Test Mühendisi",
             utestCompany: "uTest · Serbest Çalışma",
             utestDate: "Aralık 2022 – Günümüz · Uzaktan",
@@ -1092,12 +1075,12 @@
             freelance: "Serbest Çalışma",
             webDevDate: "Eylül 2018 – Mart 2023 · Uzaktan",
             webDevDescription: "HTML, CSS ve temel web teknolojileriyle duyarlı web siteleri geliştirdim. Bu deneyim, arayüz testlerine, ön yüz hatalarının analizine, tarayıcı farklarının incelenmesine ve kullanıcı deneyiminin değerlendirilmesine katkı sağlıyor.",
-            qaApiTitle: "API Testi ve Veri Doğrulama",
-            qaApiText: "API yanıtlarını beklenen değerlerle karşılaştırıyor, finansal verileri kaynağından doğruluyorum.",
-            qaAutomationTitle: "Test Otomasyonu ve CI/CD",
-            qaAutomationText: "Postman ve Newman ile API smoke kontrollerini otomatikleştiriyor ve GitHub Actions üzerinden çalıştırıyorum.",
-            qaMobileTitle: "Mobil ve Web Kalite Güvencesi",
-            qaMobileText: "Web, Android ve iOS’ta kullanıcı akışlarını test ediyor, hataları açık tekrar üretme adımlarıyla belgeliyorum.",
+            qaApiTitle: "API Test Otomasyonu ve Veri Doğrulama",
+            qaApiText: "Postman ve Newman ile API kontrollerini otomatikleştirip GitHub Actions üzerinde çalıştırıyorum. API yanıtlarındaki finansal değerleri MS SQL Server’da SQL sorgularıyla veritabanı kayıtlarıyla karşılaştırıyorum.",
+            qaAutomationTitle: "Arayüz Test Otomasyonu",
+            qaAutomationText: "Java, Selenium WebDriver ve TestNG ile web arayüz testleri yazıyor, testleri derlemek ve çalıştırmak için Maven kullanıyorum. Önceki projelerde Cucumber BDD için Gherkin senaryoları yazdım.",
+            qaMobileTitle: "Manuel Web ve Mobil Testler",
+            qaMobileText: "Web, Android ve iOS’ta fonksiyonel, regresyon, keşif ve kullanılabilirlik testleri yapıyorum. Charles Proxy ile HTTP isteklerini ve API yanıtlarını inceliyor, hataları kanıtlar ve tekrar üretme adımlarıyla raporluyorum.",
             contactTitle: "İletişime Geçelim",
             contactText: "Aşağıdaki formdan bana doğrudan mesaj gönderebilirsiniz.",
             emailCta: "E-posta Gönder",
@@ -1140,6 +1123,18 @@
             }
         }
 
+        function updateThemeButton() {
+            const isDark = root.dataset.theme === 'dark';
+            const icon = themeToggle.querySelector('i');
+            icon.classList.toggle('fa-sun', isDark);
+            icon.classList.toggle('fa-moon', !isDark);
+            const label = root.lang === 'tr'
+                ? (isDark ? 'Açık temaya geç' : 'Koyu temaya geç')
+                : (isDark ? 'Switch to light theme' : 'Switch to dark theme');
+            themeToggle.setAttribute('aria-label', label);
+            themeToggle.title = label;
+        }
+
         function applyLanguage(language) {
             const isTurkish = language === 'tr';
             root.lang = isTurkish ? 'tr' : 'en';
@@ -1155,6 +1150,7 @@
                 }
             });
 
+            updateThemeButton();
             languageButtons.forEach(button => {
                 button.setAttribute('aria-pressed', String(button.dataset.language === root.lang));
             });
@@ -1166,7 +1162,6 @@
         }
 
         applyLanguage(readPreference('portfolio-language'));
-        themeToggle.setAttribute('aria-pressed', String(root.dataset.theme === 'dark'));
         document.getElementById('navActions').hidden = false;
         root.classList.add('has-js');
 
@@ -1180,7 +1175,7 @@
         themeToggle.addEventListener('click', () => {
             const isDark = root.dataset.theme !== 'dark';
             root.dataset.theme = isDark ? 'dark' : 'light';
-            themeToggle.setAttribute('aria-pressed', String(isDark));
+            updateThemeButton();
             savePreference('portfolio-theme', root.dataset.theme);
         });
 
