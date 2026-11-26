@@ -1,0 +1,13 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Maven
+target/
+
+# Allure
+.allure/
+
+# Operating system
+Thumbs.db
+.DS_Store

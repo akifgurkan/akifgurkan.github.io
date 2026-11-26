@@ -1,0 +1,64 @@
+name: Portfolio UI Tests
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, feature/portfolio-ci-tests]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    name: Portfolio UI Smoke Tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: portfolio-ui-tests/pom.xml
+
+      - name: Run Chrome headless smoke tests
+        id: smoke
+        shell: bash
+        env:
+          BASE_URL: http://127.0.0.1:8000/
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 > "$RUNNER_TEMP/portfolio-http.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+
+          curl --fail --silent --show-error --retry 10 --retry-connrefused \
+            --retry-delay 1 --max-time 5 --output /dev/null "${BASE_URL}index.html"
+
+          cd portfolio-ui-tests
+          mvn -B clean test "-DbaseUrl=$BASE_URL" -Dbrowser=chrome -Dheadless=true -DfailIfNoTests=true
+
+      - name: Generate Allure HTML report
+        if: ${{ !cancelled() && (steps.smoke.outcome == 'success' || hashFiles('portfolio-ui-tests/target/allure-results/*-result.json') != '') }}
+        working-directory: portfolio-ui-tests
+        run: |
+          mvn -B allure:report
+          test -f target/site/allure-maven-plugin/index.html
+
+      - name: Upload test reports
+        if: ${{ !cancelled() && (steps.smoke.outcome == 'success' || steps.smoke.outcome == 'failure') }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: portfolio-ui-test-reports
+          retention-days: 7
+          path: |
+            portfolio-ui-tests/target/site/allure-maven-plugin/
+            portfolio-ui-tests/target/allure-results/
+            portfolio-ui-tests/target/surefire-reports/
