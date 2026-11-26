@@ -1,6 +1,7 @@
 name: Portfolio UI Tests
 
 on:
+  workflow_dispatch:
   pull_request:
     branches: [main]
   push:
@@ -62,3 +63,40 @@ jobs:
             portfolio-ui-tests/target/site/allure-maven-plugin/
             portfolio-ui-tests/target/allure-results/
             portfolio-ui-tests/target/surefire-reports/
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: smoke
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Prepare site files
+        run: |
+          mkdir -p _site
+          cp index.html Akif_Picture.jpg _site/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
