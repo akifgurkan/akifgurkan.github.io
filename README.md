@@ -55,6 +55,50 @@ Bu GitHub sayfamda projelerimi, test süreçlerimi ve öğrendiğim teknolojiler
    
 ---
 
+## 🧪 Portföy Sitesi UI Test Otomasyonu
+
+[![Portföy UI Testleri](https://github.com/akifgurkan/akifgurkan.github.io/actions/workflows/portfolio-ui-tests.yml/badge.svg?branch=main)](https://github.com/akifgurkan/akifgurkan.github.io/actions/workflows/portfolio-ui-tests.yml)
+
+Kişisel portföy sitesinin temel kullanıcı akışlarını doğrulayan beş Selenium smoke testi. Test projesi [`portfolio-ui-tests`](./portfolio-ui-tests) dizininde ve Page Object Model yapısını kullanıyor.
+
+**Teknolojiler:** Java 21, Selenium, TestNG, Maven, Allure Report ve GitHub Actions.
+
+### Test kapsamı
+
+1. Sayfa başlığı ve profil ismi
+2. Profil fotoğrafının görünürlüğü ve yüklenmesi
+3. Türkçe ve İngilizce dil geçişleri
+4. Açık ve koyu tema geçişleri
+5. İletişim formunda isim ve e-posta alanlarının doğrulanması
+
+Form kontrolleri alan doğrulamasıyla sınırlıdır.
+
+### Yerelde çalıştırma
+
+Java 21, Maven, Python 3 ve Google Chrome gerekir. Repo kökünden iki PowerShell terminali aç.
+
+**Birinci terminalde** yerel web sunucusunu başlat:
+
+```powershell
+python -m http.server 8000 --bind 127.0.0.1
+```
+
+**İkinci terminalde** testleri çalıştır:
+
+```powershell
+cd portfolio-ui-tests
+mvn clean test "-DbaseUrl=http://127.0.0.1:8000/" "-Dbrowser=chrome" "-Dheadless=true"
+```
+
+### Allure raporu ve CI
+
+Testlerden sonra ikinci terminalde `mvn allure:serve` ile raporu tarayıcıda açabilir veya `mvn allure:report` ile HTML raporu üretebilirsin. Rapor, test adımlarını, ortam bilgilerini ve başarısız testlerin ekran görüntülerini içerir.
+
+GitHub Actions, `main` dalına açılan pull request’lerde ve `main` veya `feature/portfolio-ci-tests` dallarına yapılan push’larda checkout edilen siteyi Chrome headless ile test eder. Allure HTML raporu ve mevcut test çıktıları, koşunun **Artifacts** bölümünde 7 gün saklanır.
+
+---
+
+
 ## 📬 İletişim  
 
 - 🌐 **Kişisel Web Sitesi:** [akifgurkan.github.io](https://akifgurkan.github.io)  
