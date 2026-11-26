@@ -23,6 +23,7 @@
     </script>
     <style>
         :root {
+            --nav-height: 4.625rem;
             --primary: #2b6cb0;
             --primary-light: #4299e1;
             --primary-dark: #2c5282;
@@ -34,7 +35,6 @@
             --bg-gradient-end: #e2eaf2;
             --nav-bg: rgba(255, 255, 255, 0.9);
             --card-bg: rgba(247, 250, 252, 0.8);
-            --card-hover: rgba(237, 242, 247, 0.9);
             --field-bg: #f7fafc;
             --border: #e2e8f0;
             --field-border: #79879a;
@@ -58,7 +58,6 @@
             --bg-gradient-end: #101a27;
             --nav-bg: rgba(28, 42, 61, 0.95);
             --card-bg: #24364d;
-            --card-hover: #2c435f;
             --field-bg: #162235;
             --border: #3e526b;
             --field-border: #6e88a8;
@@ -75,6 +74,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: calc(var(--nav-height) + 0.75rem);
         }
 
         body {
@@ -97,7 +97,7 @@
             padding: 1rem 0;
             box-shadow: var(--shadow);
             z-index: 1000;
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
             border-radius: 0 0 15px 15px;
         }
 
@@ -161,10 +161,6 @@
             outline-offset: 2px;
         }
 
-        section[id] {
-            scroll-margin-top: 5.5rem;
-        }
-
         .nav-links a {
             color: var(--primary-dark);
             text-decoration: none;
@@ -189,7 +185,7 @@
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--primary-dark);
             background-color: rgba(66, 153, 225, 0.2); /* Hover durumunda biraz daha koyu arka plan */
             transform: translateY(-2px); /* Hafif yukarı hareket ekledim */
         }
@@ -201,10 +197,14 @@
         .mobile-menu-btn {
             display: none;
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             color: var(--primary);
             background: none;
             border: none;
+        }
+
+        .has-js.mobile-nav .mobile-menu-btn {
+            display: block;
         }
 
         header {
@@ -213,7 +213,7 @@
             background: var(--bg-white);
             border-radius: 15px;
             box-shadow: var(--shadow);
-            margin-bottom: 2rem;
+            margin-bottom: 1.25rem;
             position: relative;
             overflow: hidden;
         }
@@ -311,18 +311,12 @@
 
         .section {
             background: var(--bg-white);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 15px;
             box-shadow: var(--shadow);
-            margin-bottom: 2rem;
+            margin-bottom: 1.25rem;
             position: relative;
             overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
         }
 
         .section-icon {
@@ -337,7 +331,7 @@
         .section-title {
             color: var(--primary-dark);
             font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             position: relative;
             display: inline-block;
         }
@@ -358,33 +352,36 @@
         }
 
         .about-content p {
-            margin-bottom: 1rem;
+            margin-bottom: 0.65rem;
         }
 
         .about-content p:last-child {
             margin-bottom: 0;
         }
 
-        .skills-grid {
+        .skill-categories, .qa-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.2rem;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.85rem;
         }
 
-        .skill-category {
-            margin-bottom: 2rem;
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            list-style: none;
         }
 
         .skill-category-title {
             color: var(--primary);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.55rem;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.35rem;
+            overflow-wrap: anywhere;
         }
 
-        .skill-item, .qa-card {
+        .skill-category, .qa-card {
             background: var(--card-bg);
             padding: 1rem;
             border-radius: 8px;
@@ -392,10 +389,15 @@
         }
 
         .skill-item {
-            transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.4rem;
+            max-width: 100%;
+            padding: 0.2rem 0.4rem;
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow-wrap: anywhere;
         }
 
         .certificate-link {
@@ -404,22 +406,20 @@
             font-size: 0.9rem;
         }
 
-        .skill-item:hover {
-            transform: translateX(5px);
-            background: var(--card-hover);
-            box-shadow: var(--shadow);
-        }
-
         .skill-icon {
             color: var(--primary);
-            font-size: 1.2rem;
+            flex: none;
         }
 
         .experience-item {
-            margin-bottom: 2rem;
+            margin-bottom: 1.25rem;
             position: relative;
-            padding-left: 2rem;
+            padding-left: 1.25rem;
             border-left: 2px solid var(--primary-light);
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
         }
 
         .experience-item::before {
@@ -436,29 +436,51 @@
         .experience-title {
             font-size: 1.3rem;
             color: var(--primary-dark);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.2rem;
         }
 
         .experience-company {
             font-weight: 500;
             color: var(--text-dark);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.1rem;
         }
 
         .experience-date {
             font-size: 0.9rem;
-            color: var(--secondary);
-            margin-bottom: 1rem;
+            color: var(--text-light);
+            margin-bottom: 0.45rem;
         }
 
         .experience-description {
             color: var(--text-light);
         }
 
-        .qa-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 1.2rem;
+        .experience-description + .experience-description {
+            margin-top: 0.35rem;
+        }
+
+        .qa-project {
+            grid-column: 1 / -1;
+        }
+
+        .qa-project p + p {
+            margin-top: 0.35rem;
+        }
+
+        .qa-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem 1rem;
+            margin-top: 0.35rem;
+        }
+
+        .qa-links a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            color: var(--primary-dark);
+            font-weight: 600;
+            text-underline-offset: 0.18em;
         }
 
         .qa-card h3 {
@@ -472,32 +494,37 @@
 
         .social-section {
             text-align: center;
-            padding: 2.5rem;
+            padding: 1.5rem;
             background: var(--bg-white);
             border-radius: 15px;
             box-shadow: var(--shadow);
-            margin: 2rem 0;
+        }
+
+        .social-title {
+            margin-top: 1.25rem;
+            color: var(--primary-dark);
+            font-size: 1.2rem;
         }
 
         .social-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.65rem;
+            max-width: 44rem;
+            margin: 0.6rem auto 0;
         }
 
         .social-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.8rem 2rem;
+            min-height: 44px;
+            padding: 0.45rem 0.7rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
             gap: 0.6rem;
-            min-width: 180px;
         }
 
         .linkedin-button {
@@ -548,14 +575,12 @@
         }
 
         .contact-form {
-            margin-top: 2rem;
+            margin: 0.9rem auto 0;
+            max-width: 44rem;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.7rem 0.85rem;
+            text-align: left;
         }
 
         .form-group.full {
@@ -564,14 +589,18 @@
 
         .form-label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             color: var(--text-dark);
             font-weight: 500;
         }
 
         .form-input, .form-textarea {
             width: 100%;
-            padding: 0.8rem;
+            display: block;
+            min-height: 44px;
+            padding: 0.6rem 0.75rem;
+            font: inherit;
+            scroll-margin-top: 1.75rem;
             border: 1px solid var(--field-border);
             border-radius: 8px;
             background-color: var(--field-bg);
@@ -580,16 +609,19 @@
         }
 
         .form-input:focus, .form-textarea:focus {
-            border-color: var(--primary-light);
+            border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
         }
 
         .form-textarea {
-            min-height: 120px;
+            min-height: 7rem;
             resize: vertical;
         }
 
         .form-submit {
+            justify-self: stretch;
+            min-height: 44px;
+            font: inherit;
             grid-column: 1 / -1;
             background-color: var(--action-bg);
             color: white;
@@ -639,8 +671,7 @@
 
         footer {
             text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
+            padding: 1.05rem 1rem;
             background-color: var(--bg-white);
             border-radius: 15px 15px 0 0;
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05);
@@ -648,18 +679,19 @@
 
         .footer-text {
             color: var(--secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 0.4rem;
         }
 
         .footer-links {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 0.2rem 0.85rem;
+            margin-bottom: 0.4rem;
         }
 
         .footer-links a {
+            padding-block: 0.1rem;
             color: var(--text-light);
             text-decoration: none;
             transition: var(--transition);
@@ -675,6 +707,18 @@
         }
 
         @media (max-width: 960px) {
+            :root {
+                --nav-height: calc(2.5rem + 22px);
+            }
+
+            html:not(.has-js) {
+                scroll-padding-top: 0.75rem;
+            }
+
+            nav {
+                padding-block: 11px;
+            }
+
             html:not(.has-js) nav {
                 position: static;
             }
@@ -688,7 +732,7 @@
                 flex-wrap: wrap;
             }
 
-            .has-js .nav-links {
+            .has-js.mobile-nav .nav-links {
                 display: none;
                 position: absolute;
                 top: 100%;
@@ -703,9 +747,9 @@
                 border-radius: 0 0 15px 15px;
             }
 
-            .has-js .nav-links.active {
+            .has-js.mobile-nav .nav-links.active {
                 display: flex;
-                max-height: calc(100dvh - 5rem);
+                max-height: calc(100dvh - var(--nav-height));
                 overflow-y: auto;
             }
 
@@ -714,12 +758,12 @@
                 display: block;
             }
 
-            .nav-links a::after {
-                display: none;
+            .nav-links a:focus-visible {
+                outline-offset: -3px;
             }
 
-            .has-js .mobile-menu-btn {
-                display: block;
+            .nav-links a::after {
+                display: none;
             }
 
             .nav-actions {
@@ -731,22 +775,53 @@
             }
         }
 
-        @media (max-width: 768px) {
+        @media (width < 769px) {
+            .section, .social-section {
+                padding: 1rem;
+            }
+
             .section-title {
                 overflow-wrap: anywhere;
             }
 
-            .section-icon + .section-title {
-                padding-right: 1.5rem;
+            .section-icon {
+                top: 1rem;
+                right: 1rem;
+                font-size: 1.25rem;
             }
 
-            .skills-grid, .qa-grid, .contact-form {
+            .section-icon + .section-title {
+                padding-right: 2rem;
+            }
+
+            .skill-categories, .qa-grid, .contact-form {
                 grid-template-columns: minmax(0, 1fr);
+            }
+
+            .social-buttons {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
             .back-to-top {
                 right: 0.75rem;
                 bottom: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            footer {
+                padding-inline: 3.75rem;
+            }
+        }
+
+        @media (width < 360px) {
+            .nav-container {
+                padding-inline: 0.5rem;
+                gap: 0.25rem;
+            }
+
+            .social-buttons {
+                grid-template-columns: minmax(0, 1fr);
             }
         }
 
@@ -829,51 +904,54 @@
             <i class="fas fa-code section-icon" aria-hidden="true"></i>
             <h2 class="section-title" data-i18n="skillsTitle">Technical Skills</h2>
 
-            <div class="skill-category">
-                <h3 class="skill-category-title" data-i18n="apiData">API &amp; Data Testing</h3>
-                <div class="skills-grid">
-                    <div class="skill-item"><i class="fas fa-exchange-alt skill-icon" aria-hidden="true"></i> <span data-i18n="apiTesting">API Testing</span></div>
-                    <div class="skill-item"><i class="fas fa-server skill-icon" aria-hidden="true"></i> <span data-i18n="backendTesting">Backend Testing</span></div>
-                    <div class="skill-item"><i class="fas fa-paper-plane skill-icon" aria-hidden="true"></i> Postman</div>
-                    <div class="skill-item"><i class="fas fa-terminal skill-icon" aria-hidden="true"></i> Newman</div>
-                    <div class="skill-item"><i class="fas fa-database skill-icon" aria-hidden="true"></i> MS SQL Server / SQL</div>
-                    <div class="skill-item"><i class="fas fa-check-double skill-icon" aria-hidden="true"></i> <span data-i18n="dataValidation">Data Validation</span></div>
+            <div class="skill-categories">
+                <div class="skill-category">
+                    <h3 class="skill-category-title" data-i18n="apiData">API &amp; Data Testing</h3>
+                    <ul class="skills-grid">
+                        <li class="skill-item"><i class="fas fa-exchange-alt skill-icon" aria-hidden="true"></i> <span data-i18n="apiTesting">API Testing</span></li>
+                        <li class="skill-item"><i class="fas fa-server skill-icon" aria-hidden="true"></i> <span data-i18n="backendTesting">Backend Testing</span></li>
+                        <li class="skill-item"><i class="fas fa-paper-plane skill-icon" aria-hidden="true"></i> Postman</li>
+                        <li class="skill-item"><i class="fas fa-terminal skill-icon" aria-hidden="true"></i> Newman</li>
+                        <li class="skill-item"><i class="fas fa-database skill-icon" aria-hidden="true"></i> MS SQL Server / SQL</li>
+                        <li class="skill-item"><i class="fas fa-check-double skill-icon" aria-hidden="true"></i> <span data-i18n="dataValidation">Data Validation</span></li>
+                    </ul>
                 </div>
-            </div>
 
-            <div class="skill-category">
-                <h3 class="skill-category-title" data-i18n="automation">Test Automation &amp; CI/CD</h3>
-                <div class="skills-grid">
-                    <div class="skill-item"><i class="fab fa-java skill-icon" aria-hidden="true"></i> Java</div>
-                    <div class="skill-item"><i class="fas fa-window-maximize skill-icon" aria-hidden="true"></i> Selenium WebDriver</div>
-                    <div class="skill-item"><i class="fas fa-vial skill-icon" aria-hidden="true"></i> TestNG</div>
-                    <div class="skill-item"><i class="fas fa-box skill-icon" aria-hidden="true"></i> Maven</div>
-                    <div class="skill-item"><i class="fas fa-list-check skill-icon" aria-hidden="true"></i> Cucumber BDD / Gherkin</div>
-                    <div class="skill-item"><i class="fab fa-github skill-icon" aria-hidden="true"></i> GitHub Actions</div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title" data-i18n="automation">Test Automation &amp; CI/CD</h3>
+                    <ul class="skills-grid">
+                        <li class="skill-item"><i class="fab fa-java skill-icon" aria-hidden="true"></i> Java</li>
+                        <li class="skill-item"><i class="fas fa-window-maximize skill-icon" aria-hidden="true"></i> Selenium WebDriver</li>
+                        <li class="skill-item"><i class="fas fa-vial skill-icon" aria-hidden="true"></i> TestNG</li>
+                        <li class="skill-item"><i class="fas fa-box skill-icon" aria-hidden="true"></i> Maven</li>
+                        <li class="skill-item"><i class="fas fa-list-check skill-icon" aria-hidden="true"></i> Cucumber BDD / Gherkin</li>
+                        <li class="skill-item"><i class="fas fa-chart-bar skill-icon" aria-hidden="true"></i> Allure Report</li>
+                        <li class="skill-item"><i class="fab fa-github skill-icon" aria-hidden="true"></i> GitHub Actions</li>
+                    </ul>
                 </div>
-            </div>
 
-            <div class="skill-category">
-                <h3 class="skill-category-title" data-i18n="mobileWeb">Mobile &amp; Web Testing</h3>
-                <div class="skills-grid">
-                    <div class="skill-item"><i class="fas fa-globe skill-icon" aria-hidden="true"></i> <span data-i18n="web">Web Testing</span></div>
-                    <div class="skill-item"><i class="fas fa-mobile-alt skill-icon" aria-hidden="true"></i> <span data-i18n="android">Android Testing</span></div>
-                    <div class="skill-item"><i class="fab fa-apple skill-icon" aria-hidden="true"></i> <span data-i18n="ios">iOS Testing</span></div>
-                    <div class="skill-item"><i class="fas fa-sync-alt skill-icon" aria-hidden="true"></i> <span data-i18n="regression">Regression Testing</span></div>
-                    <div class="skill-item"><i class="fas fa-compass skill-icon" aria-hidden="true"></i> <span data-i18n="exploratory">Exploratory Testing</span></div>
-                    <div class="skill-item"><i class="fas fa-network-wired skill-icon" aria-hidden="true"></i> Charles Proxy</div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title" data-i18n="mobileWeb">Mobile &amp; Web Testing</h3>
+                    <ul class="skills-grid">
+                        <li class="skill-item"><i class="fas fa-globe skill-icon" aria-hidden="true"></i> <span data-i18n="web">Web Testing</span></li>
+                        <li class="skill-item"><i class="fas fa-mobile-alt skill-icon" aria-hidden="true"></i> <span data-i18n="android">Android Testing</span></li>
+                        <li class="skill-item"><i class="fab fa-apple skill-icon" aria-hidden="true"></i> <span data-i18n="ios">iOS Testing</span></li>
+                        <li class="skill-item"><i class="fas fa-sync-alt skill-icon" aria-hidden="true"></i> <span data-i18n="regression">Regression Testing</span></li>
+                        <li class="skill-item"><i class="fas fa-compass skill-icon" aria-hidden="true"></i> <span data-i18n="exploratory">Exploratory Testing</span></li>
+                        <li class="skill-item"><i class="fas fa-network-wired skill-icon" aria-hidden="true"></i> Charles Proxy</li>
+                    </ul>
                 </div>
-            </div>
 
-            <div class="skill-category">
-                <h3 class="skill-category-title" data-i18n="tools">QA Process &amp; Tools</h3>
-                <div class="skills-grid">
-                    <div class="skill-item"><i class="fab fa-git-alt skill-icon" aria-hidden="true"></i> Git / GitHub</div>
-                    <div class="skill-item"><i class="fas fa-tasks skill-icon" aria-hidden="true"></i> Jira / Asana</div>
-                    <div class="skill-item"><i class="fas fa-file-alt skill-icon" aria-hidden="true"></i> <span data-i18n="testDesign">Test Case Design</span></div>
-                    <div class="skill-item"><i class="fas fa-clipboard-check skill-icon" aria-hidden="true"></i> <span data-i18n="bugReporting">Bug Reporting</span></div>
-                    <div class="skill-item"><i class="fas fa-vial skill-icon" aria-hidden="true"></i> <span data-i18n="smoke">Smoke Testing</span></div>
-                    <div class="skill-item"><i class="fas fa-certificate skill-icon" aria-hidden="true"></i> <div>ISTQB CTFL<a class="certificate-link" href="https://app.diplomasafe.com/en-US/diploma/d9002d3d70dd11a8d88183fcceea944892666c063/istqb-foundation-level-ctfl/linkedin" target="_blank" rel="noopener noreferrer" data-i18n="certificateLink">View Certificate</a></div></div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title" data-i18n="tools">QA Process &amp; Tools</h3>
+                    <ul class="skills-grid">
+                        <li class="skill-item"><i class="fab fa-git-alt skill-icon" aria-hidden="true"></i> Git / GitHub</li>
+                        <li class="skill-item"><i class="fas fa-tasks skill-icon" aria-hidden="true"></i> Jira / Asana</li>
+                        <li class="skill-item"><i class="fas fa-file-alt skill-icon" aria-hidden="true"></i> <span data-i18n="testDesign">Test Case Design</span></li>
+                        <li class="skill-item"><i class="fas fa-clipboard-check skill-icon" aria-hidden="true"></i> <span data-i18n="bugReporting">Bug Reporting</span></li>
+                        <li class="skill-item"><i class="fas fa-vial skill-icon" aria-hidden="true"></i> <span data-i18n="smoke">Smoke Testing</span></li>
+                        <li class="skill-item"><i class="fas fa-certificate skill-icon" aria-hidden="true"></i> <div>ISTQB CTFL<a class="certificate-link" href="https://app.diplomasafe.com/en-US/diploma/d9002d3d70dd11a8d88183fcceea944892666c063/istqb-foundation-level-ctfl/linkedin" target="_blank" rel="noopener noreferrer" data-i18n="certificateLink">View Certificate</a></div></li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -885,8 +963,9 @@
             <div class="experience-item">
                 <h3 class="experience-title" data-i18n="ecoTitle">QA Engineer</h3>
                 <p class="experience-company" data-i18n="ecoCompany">Ekofin · Fixed-Term Contract</p>
-                <p class="experience-date" data-i18n="ecoDate">Aug 2026 – Nov 2026</p>
-                <p class="experience-description" data-i18n="ecoDescription">Tested web, Android, and iOS products in financial technology and financial data analytics. Performed API testing and financial data validation, automated API checks in Postman, and ran smoke, regression, and exploratory tests. Used SQL queries in MS SQL Server to check database records against API results. Verified issues manually and reported reproducible defects.</p>
+                <p class="experience-date" data-i18n="ecoDate">Aug 2026 – Nov 2026 · Remote</p>
+                <p class="experience-description" data-i18n="ecoDescription">Tested web, Android, and iOS products in financial technology and financial data analytics. Performed API testing and financial data validation, automated API checks in Postman, and ran smoke, regression, and exploratory tests.</p>
+                <p class="experience-description" data-i18n="ecoDataChecks">Used SQL queries in MS SQL Server to check database records against API results. Verified issues manually and reported reproducible defects.</p>
             </div>
             
   <div class="experience-item">
@@ -894,14 +973,17 @@
     <p class="experience-company" data-i18n="aboneCompany">AboneSepeti · Freelance</p>
     <p class="experience-date" data-i18n="aboneDate">Apr 2024 – Present · Remote</p>
     <p class="experience-description" data-i18n="aboneDescription">
-        Perform manual, API, backend, web, Android and iOS testing for AboneSepeti products. Create and execute functional, UI and smoke test scenarios; validate request/response flows with Postman; and report clear, reproducible defects through Asana. Built and maintained Postman/Newman smoke test automation and moved the process to GitHub Actions for scheduled CI execution and Slack-based failure notifications. I also automate web UI tests with Java, Selenium WebDriver, and TestNG.
+        Perform manual, API, and backend testing for AboneSepeti products on web, Android, and iOS. Create and run functional, UI, and smoke tests. Verify requests and responses with Postman and report reproducible defects in Asana.
+    </p>
+    <p class="experience-description" data-i18n="aboneAutomation">
+        Built and maintained smoke tests with Postman and Newman, then moved them to GitHub Actions for scheduled runs and Slack failure notifications. I also automate web UI tests with Java, Selenium WebDriver, and TestNG.
     </p>
 </div>
 
   <div class="experience-item">
     <h3 class="experience-title" data-i18n="testEngineer">Software Test Engineer</h3>
     <p class="experience-company" data-i18n="utestCompany">uTest · Freelance</p>
-    <p class="experience-date" data-i18n="utestDate">Dec 2022 - Present · Remote</p>
+    <p class="experience-date" data-i18n="utestDate">Dec 2022 – Present · Remote</p>
     <p class="experience-description" data-i18n="utestDescription">
         Conduct manual, functional, regression, exploratory and usability testing on web and mobile applications for global clients. Report detailed defects with clear reproduction steps, expected/actual results, environment details and visual evidence.
     </p>
@@ -910,7 +992,7 @@
  <div class="experience-item">
     <h3 class="experience-title" data-i18n="oigetitTitle">Quality Assurance Analyst</h3>
     <p class="experience-company" data-i18n="oigetitCompany">Oigetit.ai - Fake News Filter · Internship</p>
-    <p class="experience-date" data-i18n="oigetitDate">Mar 2024 - Nov 2024 · Remote</p>
+    <p class="experience-date" data-i18n="oigetitDate">Mar 2024 – Nov 2024 · Remote</p>
     <p class="experience-description" data-i18n="oigetitDescription">
         Tested iOS and web-based news applications with a focus on functional accuracy, UI/UX consistency and usability. Reported detailed issues and shared practical improvement suggestions with the development team.
     </p>
@@ -919,7 +1001,7 @@
  <div class="experience-item">
     <h3 class="experience-title" data-i18n="testEngineer">Software Test Engineer</h3>
     <p class="experience-company" data-i18n="atechCompany">A-techSYN · Internship</p>
-    <p class="experience-date" data-i18n="atechDate">Nov 2023 - Feb 2024 · Remote</p>
+    <p class="experience-date" data-i18n="atechDate">Nov 2023 – Feb 2024 · Remote</p>
     <p class="experience-description" data-i18n="atechDescription">
         Designed and tracked test cases and bug reports using Azure DevOps. Performed API testing with Postman, executed smoke and regression tests through GitHub Actions CI/CD, and developed UI automation scripts using Selenium WebDriver, Cucumber BDD, Maven and Page Object Model structure.
     </p>
@@ -928,7 +1010,7 @@
 <div class="experience-item">
     <h3 class="experience-title" data-i18n="webDeveloper">Web Developer</h3>
     <p class="experience-company" data-i18n="freelance">Freelance</p>
-    <p class="experience-date" data-i18n="webDevDate">Sep 2018 - Mar 2023 · Remote</p>
+    <p class="experience-date" data-i18n="webDevDate">Sep 2018 – Mar 2023</p>
     <p class="experience-description" data-i18n="webDevDescription">
         Developed responsive websites using HTML, CSS and basic web technologies. This background supports stronger UI testing, frontend defect analysis, cross-browser awareness and user experience evaluation.
     </p>
@@ -940,13 +1022,19 @@
             <i class="fas fa-clipboard-check section-icon" aria-hidden="true"></i>
             <h2 class="section-title" data-i18n="qaNav">QA Work</h2>
             <div class="qa-grid">
+                <article class="qa-card qa-project">
+                    <h3 data-i18n="qaAutomationTitle">Portfolio UI Test Automation</h3>
+                    <p data-i18n="qaAutomationText">Built five smoke tests for this portfolio using Java, Selenium WebDriver, TestNG, Maven, and the Page Object Model. GitHub Actions runs the tests in headless Chrome and deploys the site from main when the tests pass.</p>
+                    <p data-i18n="qaReportText">The Allure report includes test steps and environment details. Failed tests capture and attach a screenshot.</p>
+                    <p data-i18n="qaGherkinText">In earlier projects, I wrote Gherkin scenarios for Cucumber BDD.</p>
+                    <div class="qa-links">
+                        <a href="https://github.com/akifgurkan/akifgurkan.github.io/tree/main/portfolio-ui-tests" data-i18n="qaSourceLink">GitHub source code</a>
+                        <a href="https://github.com/akifgurkan/akifgurkan.github.io/actions/workflows/portfolio-ui-tests.yml">GitHub Actions CI/CD</a>
+                    </div>
+                </article>
                 <article class="qa-card">
                     <h3 data-i18n="qaApiTitle">API Test Automation &amp; Data Validation</h3>
                     <p data-i18n="qaApiText">I automate API checks with Postman and Newman and run them in GitHub Actions. I query MS SQL Server to check that financial values in API responses match database records.</p>
-                </article>
-                <article class="qa-card">
-                    <h3 data-i18n="qaAutomationTitle">UI Test Automation</h3>
-                    <p data-i18n="qaAutomationText">I write web UI tests in Java with Selenium WebDriver and TestNG and use Maven to build and run tests. In earlier projects, I wrote Gherkin scenarios for Cucumber BDD.</p>
                 </article>
                 <article class="qa-card">
                     <h3 data-i18n="qaMobileTitle">Manual Web &amp; Mobile QA</h3>
@@ -957,27 +1045,8 @@
 
         <section id="contact" tabindex="-1" class="social-section animate">
             <h2 class="section-title" data-i18n="contactTitle">Let's Connect!</h2>
-            <p data-i18n="contactText">     You can send me a direct message using the contact form below. </p>
-            
-            <div class="social-buttons">
-                <a href="https://www.linkedin.com/in/akifgurkan/" target="_blank" rel="noopener" class="social-button linkedin-button">
-                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                    LinkedIn
-                </a>
-                <a href="https://github.com/akifgurkan" target="_blank" class="social-button github-button">
-                    <i class="fab fa-github" aria-hidden="true"></i>
-                    GitHub
-                </a>
-                <a href="https://www.instagram.com/qatester1532/" target="_blank" class="social-button instagram-button">
-                    <i class="fab fa-instagram" aria-hidden="true"></i>
-                    Instagram
-                </a>
-                <a href="mailto:akifgurkan15@gmail.com" class="social-button email-button">
-                    <i class="fas fa-envelope" aria-hidden="true"></i>
-                    <span data-i18n="emailCta">Email Me</span>
-                </a>
-            </div>
-            <h3 class="form-title" style="margin-top: 2rem; margin-bottom: 1rem;" data-i18n="formTitle">Send Me a Message</h3>
+            <p data-i18n="contactText">You can send me a direct message using the contact form below.</p>
+
             <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" id="contactForm">
                 <input type="hidden" name="access_key" value="3ecfda1c-f72a-48e3-9d96-39b8ab987caa">              
                 <div class="form-group">
@@ -998,6 +1067,26 @@
                 </div>
                 <button type="submit" class="form-submit" data-i18n="send">Send Message</button>
             </form>
+
+            <h3 class="social-title" data-i18n="socialTitle">Other ways to connect</h3>
+            <div class="social-buttons">
+                <a href="https://www.linkedin.com/in/akifgurkan/" target="_blank" rel="noopener" class="social-button linkedin-button">
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/akifgurkan" target="_blank" rel="noopener" class="social-button github-button">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    GitHub
+                </a>
+                <a href="https://www.instagram.com/qatester1532/" target="_blank" rel="noopener" class="social-button instagram-button">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                    Instagram
+                </a>
+                <a href="mailto:akifgurkan15@gmail.com" class="social-button email-button">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                    <span data-i18n="emailCta">Email Me</span>
+                </a>
+            </div>
         </section>
     </main>
 
@@ -1054,12 +1143,14 @@
             bugReporting: "Hata Raporlama",
             ecoTitle: "Kalite Güvence Mühendisi",
             ecoCompany: "Ekofin · Belirli Süreli Sözleşme",
-            ecoDate: "Ağustos 2026 – Kasım 2026",
-            ecoDescription: "Finansal teknoloji ve finansal veri analitiği alanında web, Android ve iOS ürünlerini test ettim. API testleri ve finansal veri doğrulaması yaptım, Postman ile API kontrollerini otomatikleştirdim. Smoke, regresyon ve keşif testleri yürüttüm. MS SQL Server’da SQL sorgularıyla veritabanı kayıtlarını API sonuçlarıyla karşılaştırdım. Sorunları manuel olarak doğruladım ve tekrar üretilebilir hata raporları hazırladım.",
+            ecoDate: "Ağustos 2026 – Kasım 2026 · Uzaktan",
+            ecoDescription: "Finansal teknoloji ve finansal veri analitiği alanında web, Android ve iOS ürünlerini test ettim. API testleri ve finansal veri doğrulaması yaptım, Postman ile API kontrollerini otomatikleştirdim. Smoke, regresyon ve keşif testleri yürüttüm.",
+            ecoDataChecks: "MS SQL Server’da SQL sorgularıyla veritabanı kayıtlarını API sonuçlarıyla karşılaştırdım. Sorunları manuel olarak doğruladım ve tekrar üretilebilir hata raporları hazırladım.",
             aboneTitle: "Yazılım Kalite Güvence Mühendisi",
             aboneCompany: "AboneSepeti · Serbest Çalışma",
             aboneDate: "Nisan 2024 – Günümüz · Uzaktan",
-            aboneDescription: "AboneSepeti ürünlerinde web, Android ve iOS üzerinde manuel testler, API testleri ve arka uç testleri yapıyorum. Fonksiyonel, arayüz ve smoke test senaryoları hazırlayıp yürütüyor, Postman ile istek ve yanıt akışlarını doğruluyor ve tekrar üretilebilir hataları Asana’da raporluyorum. Postman ve Newman ile geliştirdiğim smoke test otomasyonunu GitHub Actions’a taşıdım. Böylece testler zamanlanmış olarak çalışıyor ve başarısız sonuçlar Slack üzerinden bildiriliyor. Ayrıca Java, Selenium WebDriver ve TestNG ile web arayüz testlerini otomatikleştiriyorum.",
+            aboneDescription: "AboneSepeti ürünlerinde web, Android ve iOS üzerinde manuel testler, API testleri ve arka uç testleri yapıyorum. Fonksiyonel, arayüz ve smoke test senaryoları hazırlayıp yürütüyorum. Postman ile istek ve yanıt akışlarını doğruluyor, tekrar üretilebilir hataları Asana’da raporluyorum.",
+            aboneAutomation: "Postman ve Newman ile smoke testleri geliştirip bakımını yaptım. Testleri zamanlanmış koşular ve Slack hata bildirimleri için GitHub Actions’a taşıdım. Ayrıca Java, Selenium WebDriver ve TestNG ile web arayüz testlerini otomatikleştiriyorum.",
             testEngineer: "Yazılım Test Mühendisi",
             utestCompany: "uTest · Serbest Çalışma",
             utestDate: "Aralık 2022 – Günümüz · Uzaktan",
@@ -1073,23 +1164,28 @@
             atechDescription: "Azure DevOps’ta test senaryoları hazırladım ve hata raporlarını takip ettim. Postman ile API testleri yaptım, GitHub Actions ile smoke ve regresyon testlerini çalıştırdım. Selenium WebDriver, Cucumber BDD, Maven ve Page Object Model kullanarak arayüz otomasyonu geliştirdim.",
             webDeveloper: "Web Geliştirici",
             freelance: "Serbest Çalışma",
-            webDevDate: "Eylül 2018 – Mart 2023 · Uzaktan",
+            webDevDate: "Eylül 2018 – Mart 2023",
             webDevDescription: "HTML, CSS ve temel web teknolojileriyle duyarlı web siteleri geliştirdim. Bu deneyim, arayüz testlerine, ön yüz hatalarının analizine, tarayıcı farklarının incelenmesine ve kullanıcı deneyiminin değerlendirilmesine katkı sağlıyor.",
             qaApiTitle: "API Test Otomasyonu ve Veri Doğrulama",
             qaApiText: "Postman ve Newman ile API kontrollerini otomatikleştirip GitHub Actions üzerinde çalıştırıyorum. API yanıtlarındaki finansal değerleri MS SQL Server’da SQL sorgularıyla veritabanı kayıtlarıyla karşılaştırıyorum.",
-            qaAutomationTitle: "Arayüz Test Otomasyonu",
-            qaAutomationText: "Java, Selenium WebDriver ve TestNG ile web arayüz testleri yazıyor, testleri derlemek ve çalıştırmak için Maven kullanıyorum. Önceki projelerde Cucumber BDD için Gherkin senaryoları yazdım.",
+            qaAutomationTitle: "Portföy Arayüz Test Otomasyonu",
+            qaAutomationText: "Bu portföy için Java, Selenium WebDriver, TestNG, Maven ve Page Object Model ile beş smoke test geliştirdim. GitHub Actions testleri headless Chrome ile çalıştırıyor ve testler geçtiğinde siteyi main dalından yayımlıyor.",
+            qaReportText: "Allure raporunda test adımları ve ortam bilgileri yer alıyor. Başarısız testlerde ekran görüntüsü alınıp rapora ekleniyor.",
+            qaGherkinText: "Önceki projelerde Cucumber BDD için Gherkin senaryoları yazdım.",
+            qaSourceLink: "GitHub kaynak kodu",
             qaMobileTitle: "Manuel Web ve Mobil Testler",
             qaMobileText: "Web, Android ve iOS’ta fonksiyonel, regresyon, keşif ve kullanılabilirlik testleri yapıyorum. Charles Proxy ile HTTP isteklerini ve API yanıtlarını inceliyor, hataları kanıtlar ve tekrar üretme adımlarıyla raporluyorum.",
             contactTitle: "İletişime Geçelim",
             contactText: "Aşağıdaki formdan bana doğrudan mesaj gönderebilirsiniz.",
             emailCta: "E-posta Gönder",
-            formTitle: "Bana Mesaj Gönderin",
+            socialTitle: "Diğer iletişim kanalları",
             name: "Ad",
             email: "E-posta",
             subject: "Konu",
             message: "Mesaj",
             send: "Mesaj Gönder",
+            requiredField: "Lütfen bu alanı doldurun.",
+            invalidEmail: "Lütfen geçerli bir e-posta adresi girin.",
             footerThanks: "Portföyümü ziyaret ettiğiniz için teşekkürler.",
             copyright: "© 2026 Akif Gürkan. Tüm hakları saklıdır.",
         };
@@ -1101,8 +1197,11 @@
         const languageButtons = document.querySelectorAll('[data-language]');
         const themeToggle = document.getElementById('themeToggle');
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navigation = document.querySelector('nav');
+        const navActions = document.getElementById('navActions');
         const navLinks = document.getElementById('navLinks');
         const mobileLayout = matchMedia('(max-width: 960px)');
+        const contactForm = document.getElementById('contactForm');
 
         // Retain the English HTML as the default and update only text and accessible labels.
         const translations = [...document.querySelectorAll('[data-i18n], [data-i18n-label]')].map(element => {
@@ -1135,6 +1234,17 @@
             themeToggle.title = label;
         }
 
+        function updateContactValidity(field) {
+            const isTurkish = root.lang === 'tr';
+            let message = '';
+            if (field.validity.valueMissing) {
+                message = isTurkish ? turkish.requiredField : 'Please fill out this field.';
+            } else if (field.validity.typeMismatch) {
+                message = isTurkish ? turkish.invalidEmail : 'Please enter a valid email address.';
+            }
+            field.setCustomValidity(message);
+        }
+
         function applyLanguage(language) {
             const isTurkish = language === 'tr';
             root.lang = isTurkish ? 'tr' : 'en';
@@ -1154,6 +1264,9 @@
             languageButtons.forEach(button => {
                 button.setAttribute('aria-pressed', String(button.dataset.language === root.lang));
             });
+            contactForm.querySelectorAll('[required]').forEach(field => {
+                if (field.validity.customError) updateContactValidity(field);
+            });
         }
 
         function setMenuOpen(open) {
@@ -1161,9 +1274,39 @@
             mobileMenuBtn.setAttribute('aria-expanded', String(open));
         }
 
+        function syncMenuLayout() {
+            const focused = document.activeElement;
+            const linkFocused = navLinks.contains(focused);
+
+            // Match the order of keyboard stops to the controls visible at each width.
+            root.classList.toggle('mobile-nav', mobileLayout.matches);
+            if (mobileLayout.matches) {
+                navActions.after(navLinks);
+                if (linkFocused) mobileMenuBtn.focus({ preventScroll: true });
+            } else {
+                navActions.before(navLinks);
+                const nextFocus = focused === mobileMenuBtn ? navLinks.querySelector('a') : focused;
+                if (linkFocused || focused === mobileMenuBtn) nextFocus.focus({ preventScroll: true });
+            }
+
+            setMenuOpen(false);
+        }
+
         applyLanguage(readPreference('portfolio-language'));
-        document.getElementById('navActions').hidden = false;
+        // Let the browser display its validation bubble and focus the invalid field.
+        contactForm.addEventListener('invalid', event => updateContactValidity(event.target), true);
+        contactForm.addEventListener('input', event => {
+            if (event.target.validity.customError) updateContactValidity(event.target);
+        });
+        navActions.hidden = false;
+        syncMenuLayout();
         root.classList.add('has-js');
+
+        if ('ResizeObserver' in window) {
+            new ResizeObserver(() => {
+                root.style.setProperty('--nav-height', `${navigation.getBoundingClientRect().height}px`);
+            }).observe(navigation);
+        }
 
         languageButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -1190,17 +1333,24 @@
             });
         });
 
-        document.querySelector('nav').addEventListener('keydown', event => {
+        navigation.addEventListener('keydown', event => {
             if (event.key === 'Escape' && navLinks.classList.contains('active')) {
                 setMenuOpen(false);
                 mobileMenuBtn.focus();
             }
         });
 
-        mobileLayout.addEventListener('change', () => setMenuOpen(false));
+        navigation.addEventListener('focusout', event => {
+            if (!navigation.contains(event.relatedTarget)) setMenuOpen(false);
+        });
+
+        mobileLayout.addEventListener('change', syncMenuLayout);
 
         const backToTopBtn = document.getElementById('backToTop');
         const updateBackToTop = () => backToTopBtn.classList.toggle('visible', window.scrollY > 300);
+        backToTopBtn.addEventListener('click', () => {
+            requestAnimationFrame(() => navigation.querySelector('.logo').focus({ preventScroll: true }));
+        });
         window.addEventListener('scroll', updateBackToTop, { passive: true });
         updateBackToTop();
     </script>
